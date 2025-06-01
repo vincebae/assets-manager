@@ -1,27 +1,19 @@
 (ns my.app
-  (:require [clojure.string :as s])
+  (:require [my.example :as ex])
   (:gen-class))
 
-(defn greet
-  [xs]
-  (if (empty? xs)
-    "Hello, World!",
-    (str "Hello, " (s/join ", " xs) "!")))
-
 (defn init
-  [args]
-  (println "Init.")
-  args)
+  [& _]
+  (ex/init))
 
 (defn start
   [system]
-  (println "Start.")
-  (println (greet system)))
+  (ex/start system))
 
 (defn stop
   [system]
-  (println "Stop."))
+  (ex/stop system))
 
 (defn -main
   [& args]
-  (start (init args)))
+  (start (apply init args)))

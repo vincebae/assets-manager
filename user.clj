@@ -7,12 +7,8 @@
          '[clojure.pprint :refer [pprint]]
          '[clojure.string :as s]
          '[clojure.test :as test]
-         '[dev :refer [system go! stop! refresh!]])
+         '[dev :refer [system stop! restart!]])
 
 @system
-(go!)
-(go! "Alice" "Bob")
+(restart!)
 (stop!)
-(refresh!)
-(refresh! "Alice" "Bob")
-

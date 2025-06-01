@@ -1,27 +1,20 @@
 {:paths ["src" "resources"]
 
  :deps
- {metosin/malli {:mvn/version "0.18.0"}
+ ;; end of deps
+ {com.badlogicgames.gdx/gdx {:mvn/version "1.12.1"}
+  com.badlogicgames.gdx/gdx-backend-lwjgl3 {:mvn/version "1.12.1"}
+  com.badlogicgames.gdx/gdx-platform$natives-desktop {:mvn/version "1.12.1"}
+  metosin/malli {:mvn/version "0.18.0"}
   org.clojure/clojure {:mvn/version "1.12.0"}
   org.clojure/core.async {:mvn/version "1.8.741"}
   org.clojure/core.match {:mvn/version "1.1.0"}}
 
- ;; end of deps
-
  :tasks
- {;; Unfortunately, it doesn't work with java library.
-  run
-  {:doc "Run main function directly"
-   :override-builtin true
-   :task (do
-           (require [(symbol MAIN-NS)])
-           (apply
-            (ns-resolve (find-ns (symbol MAIN-NS)) (symbol "-main"))
-            *command-line-args*))}
-
-  run-clj
+ {run
   {:doc "Run main function through clj"
-   :task (apply clojure "-M -m" MAIN-NS *command-line-args*)}
+   :override-builtin true
+   :task (apply clojure "-M:prod" *command-line-args*)}
 
   run-uber
   {:doc "Run uberjar"

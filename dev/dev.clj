@@ -91,7 +91,7 @@
   (println "Start dev main")
   (reset! nrepl-server (start-nrepl-server!))
   (println "Started nrepl server on port" (:port @nrepl-server))
-  ;; Wait on dev-chan indefinitely to block the main thread.
-  (<!! dev-chan))
-  ;; For the long running process, comment the line above and uncomment this line.
-  ;; (start-dev-loop!))
+  ; Wait on dev-chan indefinitely to block the main thread.
+  ; (<!! dev-chan))
+  ; For the long running process, comment the line above and uncomment this line.
+  (start-dev-loop!))
